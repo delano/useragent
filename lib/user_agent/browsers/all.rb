@@ -2,7 +2,7 @@ class UserAgent
   module Browsers
     module All
       include Comparable
-
+      
       def <=>(other)
         if respond_to?(:browser) && other.respond_to?(:browser) &&
             browser == other.browser
@@ -31,7 +31,23 @@ class UserAgent
       def browser
         application.product
       end
-
+      
+      def platform
+        "Unknown"
+      end
+      
+      def os
+        "Unknown"
+      end
+      
+      def version=(v)
+        application.version = v
+      end
+      
+      def original
+        application.original
+      end
+      
       def version
         application.version
       end

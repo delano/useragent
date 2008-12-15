@@ -13,7 +13,7 @@ class UserAgent
   def self.parse(string)
     agents = []
     while m = string.match(MATCHER)
-      agent = new(m[1], m[2], m[4])
+      agent = new(m[1], m[2], m[4], string)
       agents << agent
       string = string.sub(agent.to_s, '').strip
     end
@@ -21,9 +21,9 @@ class UserAgent
     agents
   end
 
-  attr_reader :product, :version, :comment
+  attr_accessor :product, :version, :comment, :original
 
-  def initialize(product, version = nil, comment = nil)
+  def initialize(product, version = nil, comment = nil, original = nil)
     if product
       @product = product
     else
@@ -39,6 +39,8 @@ class UserAgent
     else
       @comment = comment
     end
+    
+    @original = original
   end
 
   include Comparable

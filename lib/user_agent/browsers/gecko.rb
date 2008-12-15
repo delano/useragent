@@ -17,6 +17,11 @@ class UserAgent
       def version
         send(browser).version || super
       end
+      
+      
+      def version=(v)
+        send(browser).version = v
+      end
 
       def platform
         application.comment[0]

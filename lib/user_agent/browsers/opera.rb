@@ -20,6 +20,14 @@ class UserAgent
           Security[application.comment[1]]
         end
       end
+      
+      def version
+        application.version
+      end
+      
+      def version=(v)
+        application.version = v
+      end
 
       def os
         if application.comment[0] =~ /Windows/
